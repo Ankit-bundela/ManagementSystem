@@ -46,6 +46,16 @@ app.use("/inactiveUsers", verifyToken, inactiveUsersRouter);
 
 // Start Server
 const PORT = process.env.PORT || 5050;
+app.get("/", (req, res) => {
+    res.send("Employee Management System API is running!");
+});
+
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "OK",
+        message: "Backend is running"
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Server is ready on port ${PORT}`);
