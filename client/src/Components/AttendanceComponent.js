@@ -44,7 +44,8 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import { makeStyles } from "@mui/styles";
 
 // React proxy configured hai to relative URL use karo.
-const API_URL = "http://localhost:5050/attendance";
+
+const API_URL = `${process.env.REACT_APP_API_URL}/attendance`;
 
 const useStyles = makeStyles(() => ({
     root: {

@@ -1,16 +1,28 @@
+
 const mysql = require("mysql2/promise");
+const fs = require("fs");
+const path = require("path");
 
 async function getConnection() {
     try {
-        const connection = await mysql.createConnection({
+        const config = {
             host: process.env.DB_HOST || "localhost",
             port: Number(process.env.DB_PORT || 3306),
             user: process.env.DB_USER || "root",
             password: process.env.DB_PASSWORD,
             database: process.env.DB_NAME || "hr_db"
-        });
+        };
 
-        return connection;
+        if (process.env.DB_HOST) {
+            config.ssl = {
+                ca: fs.readFileSync(
+                    path.join(__dirname, "../../certs/ca.pem"),
+                    "utf8"
+                )
+            };
+        }
+
+        return await mysql.createConnection(config);
     } catch (err) {
         console.error("Database connection error:", err.message);
         throw err;

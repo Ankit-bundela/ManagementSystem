@@ -40,9 +40,10 @@ import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
 import PublicRoundedIcon from "@mui/icons-material/PublicRounded";
 import BadgeRoundedIcon from "@mui/icons-material/BadgeRounded";
 
-const API_URL = "http://localhost:5050/employees";
-const DEPARTMENT_API_URL = "http://localhost:5050/departments";
-
+//const API_URL = "http://localhost:5050/employees";
+//const DEPARTMENT_API_URL = "http://localhost:5050/departments";
+const API_URL = `${process.env.REACT_APP_API_URL}/employees`;
+const DEPARTMENT_API_URL = `${process.env.REACT_APP_API_URL}/departments`;
 
 
 const initialFormData = {

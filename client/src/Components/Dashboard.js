@@ -24,7 +24,8 @@ import ApartmentRoundedIcon from "@mui/icons-material/Apartment";
 
 // ================= API FUNCTIONS =================
 
-const API_URL = "http://localhost:5050";
+//const API_URL = "http://localhost:5050";
+const API_URL = process.env.REACT_APP_API_URL;
 
 const fetchAPI = async (endpoint) => {
     const token = localStorage.getItem("token");
