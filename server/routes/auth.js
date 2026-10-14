@@ -16,6 +16,7 @@ router.get("/profile", verifyToken, (req, res) => {
 });
 
 // REGISTER API
+
 router.post("/register", async (req, res) => {
     let connection;
 
@@ -72,7 +73,9 @@ router.post("/register", async (req, res) => {
         });
 
     } catch (error) {
-        console.error("Register error:", error);
+        console.error("REGISTER ERROR CODE:", error.code);
+        console.error("REGISTER ERROR MESSAGE:", error.message);
+        console.error("REGISTER ERROR DETAILS:", error);
 
         if (error.code === "ER_DUP_ENTRY") {
             return res.status(409).json({
@@ -85,8 +88,7 @@ router.post("/register", async (req, res) => {
             success: false,
             message: "Registration failed."
         });
-
-    } 
+    }
 });
 
 // LOGIN API
@@ -167,7 +169,7 @@ router.post("/login", async (req, res) => {
             message: "Login failed."
         });
 
-    } 
+    }
 });
 
 module.exports = router;
