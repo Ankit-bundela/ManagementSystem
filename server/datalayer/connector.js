@@ -1,7 +1,5 @@
 
 const mysql = require("mysql2/promise");
-const fs = require("fs");
-const path = require("path");
 
 async function getConnection() {
     try {
@@ -14,17 +12,26 @@ async function getConnection() {
         };
 
         if (process.env.DB_HOST) {
+            const caCertificate = process.env.DB_CA_CERT;
+
+            if (!caCertificate) {
+                throw new Error(
+                    "DB_CA_CERT is missing in environment variables."
+                );
+            }
+
             config.ssl = {
-                ca: fs.readFileSync(
-                    path.join(__dirname, "../../certs/ca.pem"),
-                    "utf8"
-                )
+                ca: caCertificate.replace(/\\n/g, "\n")
             };
         }
 
         return await mysql.createConnection(config);
     } catch (err) {
-        console.error("Database connection error:", err.message);
+        console.error(
+            "Database connection error:",
+            err.code || "",
+            err.message
+        );
         throw err;
     }
 }
