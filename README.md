@@ -1,99 +1,68 @@
 # Employee Management System
 
-A full-stack web application to manage employee records, departments, attendance, salaries, and employee addresses.
+A full-stack web application built to simplify employee management with a modern UI, secure JWT authentication, and a MySQL database.
+
 ## Features
 
-- **User Authentication** — Secure login and registration using JWT (JSON Web Tokens).
-- **Employee Management** — Add, view, update, and manage employee records.
-- **Department Management** — Manage departments and employee counts.
-- **Attendance Management** — Track Present, Absent, and Leave statuses.
-- **Attendance Summary** — View employee attendance summaries.
-- **Salary Management** — Manage employee salary details.
-- **Employee Address Management** — Maintain employee address records.
-- **Inactive Users** — View employees marked as inactive.
-- **Dashboard** — View employee statistics and department summaries.
-- **REST API Integration** — Connect the React frontend with the Express backend and MySQL database.
+- **Authentication:** User registration, login, and JWT-based authentication.
+- **Dashboard:** Employee statistics and department summaries.
+- **Employee Management:** Create, view, update, and manage employee records.
+- **Department Management:** Manage departments and employee counts.
+- **Attendance Management:** Track Present, Absent, and Leave records with attendance summaries.
+- **Salary Management:** Manage employee salary details.
+- **Address Management:** Manage employee addresses with country, state, and city selection.
+- **Inactive Users:** View employees marked as inactive.
+- **REST APIs:** Backend integration with protected routes.
 
-## Technologies Used
+## Tech Stack
 
-### Frontend
-- React.js
-- React Router
-- Material UI (MUI)
-- JavaScript
-- HTML and CSS
-
-### Backend
-- Node.js
-- Express.js
-- REST APIs
-- JWT (JSON Web Tokens) Authentication
-
-### Database
-- MySQL
-- mysql2
-
-### Tools
-- Git
-- GitHub
-- Postman
+- **Frontend:** React.js, React Router, Material UI
+- **Backend:** Node.js, Express.js, REST APIs, JWT
+- **Database:** MySQL, mysql2
+- **Tools:** Git, GitHub, Postman
+- **Deployment:** Vercel (Frontend), Render (Backend)
 
 ## Project Structure
 
 ```text
 EmployeeManagementSystem/
-├── client/
-├── server/
+├── client/       # React frontend
+├── server/       # Express backend and APIs
 └── README.md
 ```
 
-## Installation and Setup
-
-### 1. Clone the repository
+## Run Locally
 
 ```bash
+# Clone repository
 git clone https://github.com/Ankit-bundela/ManagementSystem.git
 cd ManagementSystem
-```
 
-### 2. Configure MySQL
-
-- Start your MySQL server.
-- Create the required database (`hr_db`).
-- Create or import the required tables and triggers.
-- Configure the database credentials securely in the backend.
-
-*
-
-### 3. Start the frontend
-
-```bash
-cd client
-npm install
-npm start
-
-```
-
-### 4. Start the backend
-
-Open another terminal:
-
-```bash
+# Backend
 cd server
 npm install
 npm start
+
+# Frontend: open a new terminal
+cd client
+npm install
+npm start
 ```
 
-If `npm start` is not configured, run the backend entry file specified in `server/package.json`.
+Configure your MySQL database and required environment variables in the backend before starting the application.
 
-Make sure the frontend API URLs and backend port match your configuration.
+## Live Deployment
 
-## API Routes
+- **Frontend:** [Employee Management System](https://management-system-dusky-mu.vercel.app)
 
-The backend contains route groups for:
+- **Backend API:** [Render](https://employee-management-api-ikdn.onrender.com)
+- **GitHub Repository:** [ManagementSystem](https://github.com/Ankit-bundela/ManagementSystem)
 
-- `/employees`
-- `/departments`
-- `/attendance`
-- `/dashboard`
-- `/inactiveUsers
+*Note: The frontend requires the backend and database services to be available for full functionality.*
+
+## Author
+
+**Ankit Bundela**  
+B.Tech in Computer Science and Engineering (2025)
+
+[GitHub Profile](https://github.com/Ankit-bundela)
