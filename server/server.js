@@ -7,16 +7,19 @@ const cors = require("cors");
 const app = express();
 
 // Middleware
+
 app.use(
     cors({
         origin: [
             "http://localhost:3000",
-            "https://management-system-dusky-mu.vercel.app"
+            "https://management-system-dusky-mu.vercel.app",
+            "https://management-system-5805wsmlk-ankit-bundelas-projects.vercel.app"
         ],
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-        allowedHeaders: ["Content-Type", "Authorization"],
+        allowedHeaders: ["Content-Type", "Authorization"]
     })
 );
+
 
 app.use(express.json());
 
