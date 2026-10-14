@@ -514,8 +514,11 @@ function Register() {
         try {
             setLoading(true);
 
+
+            const API_URL = process.env.REACT_APP_API_URL;
+
             const response = await fetch(
-                "/auth/register",
+                `${API_URL}/auth/register`,
                 {
                     method: "POST",
                     headers: {
@@ -528,6 +531,7 @@ function Register() {
                     }),
                 }
             );
+
 
             const data = await response.json();
 
