@@ -7,19 +7,19 @@ const cors = require("cors");
 const app = express();
 
 // Middleware
-
 app.use(
     cors({
         origin: [
             "http://localhost:3000",
             "https://management-system-dusky-mu.vercel.app",
-            "https://management-system-5805wsmlk-ankit-bundelas-projects.vercel.app"
+            "https://management-system-5805wsmlk-ankit-bundelas-projects.vercel.app",
+            "https://management-system-fgaa96i8d-ankit-bundelas-projects.vercel.app",
+            "https://management-system-git-main-ankit-bundelas-projects.vercel.app"
         ],
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization"]
     })
 );
-
 
 app.use(express.json());
 
@@ -50,8 +50,7 @@ app.use("/attendance", verifyToken, attendanceRoutes);
 app.use("/locations", verifyToken, locationRoutes);
 app.use("/inactiveUsers", verifyToken, inactiveUsersRouter);
 
-// Start Server
-const PORT = process.env.PORT || 5050;
+// Health checks
 app.get("/", (req, res) => {
     res.send("Employee Management System API is running!");
 });
@@ -62,6 +61,9 @@ app.get("/health", (req, res) => {
         message: "Backend is running"
     });
 });
+
+// Start server
+const PORT = process.env.PORT || 5050;
 
 app.listen(PORT, () => {
     console.log(`Server is ready on port ${PORT}`);
