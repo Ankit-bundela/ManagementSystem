@@ -16,7 +16,10 @@ import LoginImage from "../assets/images/login.png";
 import GoogleLogo from "../assets/images/google.png";
 import MicrosoftLogo from "../assets/images/microsoft.png";
 
-const API_URL = "http://localhost:5050";
+const API_URL =
+  process.env.NODE_ENV === "development"
+    ? ""
+    : "https://employee-management-api-ikdn.onrender.com";
 
 const useStyles = makeStyles(() => ({
   page: {
@@ -564,7 +567,7 @@ export default function Login() {
     try {
       setLoading(true);
 
-      const response = await fetch("/auth/login", {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
