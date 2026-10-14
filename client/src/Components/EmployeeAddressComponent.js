@@ -46,10 +46,20 @@ import PinDropRoundedIcon from "@mui/icons-material/PinDropRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
-
+/*
 const API_URL = "/addresses";
 const EMPLOYEE_API = "/employees";
-const LOCATION_API = "/locations";
+const LOCATION_API = "/locations";*/
+
+const BASE_API_URL =
+    process.env.NODE_ENV === "development"
+        ? ""
+        : "https://employee-management-api-ikdn.onrender.com";
+
+const API_URL = `${BASE_API_URL}/addresses`;
+const EMPLOYEE_API = `${BASE_API_URL}/employees`;
+const LOCATION_API = `${BASE_API_URL}/locations`;
+
 
 const emptyForm = {
     emp_id: "",

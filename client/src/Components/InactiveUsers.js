@@ -25,6 +25,12 @@ import PersonOffRoundedIcon from "@mui/icons-material/PersonOffRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
 
+const API_URL =
+    process.env.NODE_ENV === "development"
+        ? ""
+        : "https://employee-management-api-ikdn.onrender.com";
+
+
 const InactiveUsers = () => {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -41,11 +47,14 @@ const InactiveUsers = () => {
                 setLoading(true);
                 setError("");
 
-                const response = await fetch("/inactiveUsers", {
+
+
+                const response = await fetch(`${API_URL}/inactiveUsers`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`
                     }
                 });
+
 
                 if (!response.ok) {
                     throw new Error("Failed to fetch inactive users");

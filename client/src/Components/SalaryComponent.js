@@ -42,8 +42,14 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
-const API_URL = "/salary";
-const EMPLOYEE_API_URL = "/employees";
+const BASE_API_URL =
+    process.env.NODE_ENV === "development"
+        ? ""
+        : "https://employee-management-api-ikdn.onrender.com";
+
+const API_URL = `${BASE_API_URL}/salary`;
+const EMPLOYEE_API_URL = `${BASE_API_URL}/employees`;
+
 
 const money = (amount) =>
     new Intl.NumberFormat("en-IN", {

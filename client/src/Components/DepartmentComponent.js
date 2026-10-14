@@ -40,7 +40,10 @@ import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
-
+const API_URL =
+    process.env.NODE_ENV === "development"
+        ? ""
+        : "https://employee-management-api-ikdn.onrender.com";
 const useStyles = makeStyles(() => ({
     root: {
         padding: "32px",
@@ -204,7 +207,6 @@ const useStyles = makeStyles(() => ({
         color: "#64748b",
     },
 }));
-
 const DepartmentComponent = () => {
     const classes = useStyles();
 
@@ -230,7 +232,8 @@ const DepartmentComponent = () => {
 
     // READ: Fetch departments and employee counts
     const fetchDepartments = async () => {
-        const response = await fetch("/departments/employee-counts", {
+        const response = await fetch(
+            `${API_URL}/departments/employee-counts`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("token")}`
             }
@@ -319,8 +322,8 @@ const DepartmentComponent = () => {
         }
 
         const url = editingDepartment
-            ? `/departments/${encodeURIComponent(editingDepartment.code)}`
-            : "/departments";
+            ? `${API_URL}/departments/${encodeURIComponent(editingDepartment.code)}`
+            : `${API_URL}/departments`;
 
         const method = editingDepartment ? "PUT" : "POST";
 
@@ -377,7 +380,7 @@ const DepartmentComponent = () => {
             setError("");
 
             const response = await fetch(
-                `/departments/${encodeURIComponent(deleteCode)}`,
+                `${API_URL}/departments/${encodeURIComponent(deleteCode)}`,
                 {
                     method: "DELETE",
                     headers: {
